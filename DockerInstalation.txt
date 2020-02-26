@@ -70,4 +70,20 @@ eg. -- docker run --entrypoint=date ubuntu  ---> this will just print the date
 ************************************
 PORT MAPING
 *******************************
+docker run -p hostPort:containerPort image.
 
+In simple words . If we want to access an application running inside a container from some other machine. We will map the port of the container to that of the host. So that outside user can easily access the application using the host port.
+
+
+docker run -p 8080:8080 jenkins will be able to acess using hostIpand port 8080
+docker run jenkins..// won't be able to access using host Ip and 8080 port.
+
+docker run -p 80:80 nginx
+
+
+*******************
+Volume maping
+***********************8
+Whatever we do inside a docker container goes away with the container. We are pllaning to run our tests inside the container which will create some test outputs. So we map a director in host to the container. And the fiels can be shared. Files present in host are available for the container and vice versa.
+
+docker run -v hostDirectory:containerDir image
