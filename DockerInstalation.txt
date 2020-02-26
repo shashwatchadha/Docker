@@ -14,9 +14,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 
 
-
-
-*******************
+******************
 CHECK INSTALLATIONS
 *******************
 docker version
@@ -31,9 +29,45 @@ docker system prune -a  # DO not use this command.
 ******************
 BASIC COMMANDS
 ******************
-docker run hello-world 			//This will first check for hello-world image in local repository. If it is not present it will download it from the remote repository
+docker run hello-world 			//This will first check for hello-world image in local repository. If it is not present it will download hello-world:latest from the remote repository and run hello-world
 
 docker pull imageName			// This will check for the image in remote even if image is present in local. If new version is present it will download the extra files	
 
 docker images                // This will show all the images in local repo.
+
+
+
+***************
+image name format
+******************
+[repository-name:port]/[owner]/image[:tag]
+By default 
+[repository-name:port] ---- hub.docker.com
+[owner] --- library (docker owner)
+tag -- latest 
+
+**********************
+Basic Docker continer
+**********************
+-d to run container in background
+-i to attach standard input to the container
+-t to attach standard output to the container
+--name someName  to give some name to the container
+--entrypoint=/bin/bash . this command will execute as soon as the contriner is created.
+An image might have it's own entry point but this will overRide that
+
+docker run -d helllo-world   ----> This will not print any output in the console.It will only show the containerID.
+
+docker run ubuntu ---- if we run the command it will simply exit. This is because we did not run this in interactive mode.
+docker run -it ubuntu --- Using it we can intercat with the container...
+if we only use -t .. we won't be able to interact with the container. As the command that we will type it won't reach the container.
+
+# docker run will always create a new container.
+
+eg. -- docker run --entrypoint=date ubuntu  ---> this will just print the date
+
+
+************************************
+PORT MAPING
+*******************************
 
